@@ -1,0 +1,179 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>考研自测器</title>
+    <style type="text/css">
+    .body{
+		color:#353030;
+	    font-family:"Helvetica Neue", Helvetica, Arial, "Hiragion Sans GB", "Microsoft Yahei", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;}
+	.header{
+	    width:100%;
+	    height:160px;
+	    left:0;
+	    top:0;
+	    z-index:3;
+	    position:absolute;
+    }
+
+    .header-content{
+	    width:1200px;
+	    font-size:55px;
+	    color:#F1F1F1;
+	    font-family:"Times New Roman", Times, serif;
+	    text-align: center;
+	    padding-top:52px;
+        padding-bottom:30px;
+        margin:auto;}
+
+    .banner-inner{
+        position:absolute;
+        width:100%;
+        height:200px;
+        top:108%;
+        text-align:center;
+        margin-top:-30px;}
+
+    .global-bannner{
+        background-image:url(/static/PICS/banner.jpg);
+        opacity:0.5;
+        width:100%;
+        height:100%;
+        position:relative;
+        box-sizing:border-box;
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:cover;
+        min-height:750px;
+        }
+
+    .banner-title1{
+        color:#fff;
+        line-height:1.5;
+        letter-spacing:25px;
+        margin-bottom:1px;
+        font-weight:600;
+        font-size:38px;
+        font-family:STZhongsong;
+        }
+    .banner-title2{
+        color:#fff;
+        line-height:1.6;
+        font-weight:400;
+        font-size:20px;
+        }
+
+    .banner-btn{
+        margin-top:50px;
+        margin-right:auto;
+        margin-left:auto;
+        width:160px;
+        font-size:14px;
+        height:53px;
+        line-height:74px;
+        letter-spacing:1px;
+        background-image:url(/static/PICS/btn-bg.png);
+        background-size:100%;
+        display:block;
+        color:#fff;
+        text-align:center;
+        }
+    .banner-image1{
+        background-image:url(/static/PICS/Coldplay1.png);
+        position:absolute;
+        background-size:115%;
+        width:160px;
+        height:140px;
+        }
+    .banner-image2{
+        background-image:url(/static/PICS/Coldplay2.png);
+        position:absolute;
+        background-size:115%;
+        width:160px;
+        height:190px;
+        }
+    .footer-item{
+        font-size:20px;
+        color:#EFEFEF;
+        position:absolute;
+        width:100%;
+        text-align:center;
+        margin-top:580px;
+        }
+
+    #main li{
+        list-style:none;
+        height:35px;
+        text-align: right;
+    }
+
+    #main.txt{
+        height:20px;
+        width:150px;
+        border:#157782 1px solid;
+        background-color:#FFFFCC;
+    }
+
+    #main.btn{
+        border:1px #333 solid;
+        height:25px;
+        color:#FFFFFF;
+        text-align: "center"
+    }
+    </style>
+</head>
+<body style=" background-color:#0d0505">
+<section class="global-bannner">
+</section>
+<div class="header">
+    <div class="header-content">
+        <strong>
+            Test of Graduate Student Entrance Examination
+        </strong>
+    </div>
+    <div class="banner-inner">
+        <h1 class="banner-title1">考研自测器</h1>
+        <h2 class="banner-title2">只要你对自我学习的情况有点逼数</h2>
+        <h2 class="banner-title2">输入你的学习情况就能知道</h2>
+        <button style="background: transparent; border:0px">
+            <div id="main">
+                <ul>
+                    <form  method="post" action="{% url 'index' %}">
+                        {% csrf_token %}
+                        <li>
+                        <label>总分数</label>
+                            <input name="gre" type="text" class="txt"/>
+                        </li>
+                        <li>
+                        <label>GPA </label>
+                            <input name="gpa" type="text" class="txt"/>
+                        </li>
+                        <li>
+                        <label>学校等级</label>
+                            <input name="rank" type="text" class="txt"/>
+                        </li>
+                        <li text-align="center">
+                        <input type="submit" class="btn" value="提交"/>
+                            <input type="reset" class="btn" value="重置"/>
+                        </li>
+                    </form>
+                </ul>
+            </div>
+            <div style="color:#0000FF;font-weight:600; font-size:38px; font-family:STZhongsong;">{{result}}</div>
+        </button>
+    </div>
+    <div class="banner-image1" style="margin-top:-30; margin-left:300px;">
+    </div>
+    <div class="banner-image2" style="margin-top:150px; margin-left:1050px">
+    </div>
+    <div class="footer-item">
+        <div style="font-family:STZhongsong; display:inline">
+            小组成员：
+            <div style="font-family:FangSong; display:inline;">
+                方登杰 李云洁 韩咏峰 杨斐涵 苟世鑫 朱洪成 刘阳
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
